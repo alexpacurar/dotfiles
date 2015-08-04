@@ -14,3 +14,7 @@ inoremap " ""
 inoremap [ []
 inoremap { {}
 inoremap ' ''
+
+set number
+set hlsearch
+set numberwidth=2
