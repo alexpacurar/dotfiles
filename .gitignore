@@ -1,0 +1,7 @@
+*.py[cod]
+
+# Installer logs
+pip-log.txt
+
+# Virtual environment
+venv
