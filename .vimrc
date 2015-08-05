@@ -16,5 +16,6 @@ inoremap { {}
 inoremap ' ''
 
 set number
+set paste
 set hlsearch
 set numberwidth=2
