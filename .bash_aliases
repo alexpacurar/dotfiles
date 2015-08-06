@@ -1,7 +1,7 @@
 #!/usr/bine/env bash
 
 function check_line () {
-    [ "`cat $2 | wc -l`" -eq "$1" ]
+    [ "`cat $2 | wc -l`" -gt "$1" ]
 }
 
 function clear_line () {
