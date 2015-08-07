@@ -6,6 +6,7 @@ function check_line () {
 }
 
 function sort_array () {
+    # Reverse soring the arguments to avoid stepping on our feet when deleting from the file
     echo "$(
         for element in $@
         do
