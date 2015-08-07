@@ -1,6 +1,7 @@
 #!/usr/bine/env bash
 
 function check_line () {
+    # Test if the line number is an integer and that the file is that long
     [[ "$1" =~ [0-9]+$ ]] && [ "`cat $2 | wc -l`" -ge "$1" ] || return 1
 }
 
