@@ -24,4 +24,5 @@ function clear_known_hosts () {
     fi
 }
 
+#Need a better name
 alias clkh='clear_known_hosts'
