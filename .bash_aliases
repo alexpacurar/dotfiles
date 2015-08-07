@@ -1,28 +1,30 @@
 #!/usr/bine/env bash
 
 function check_line () {
-    [ "`cat $2 | wc -l`" -gt "$1" ]
+    [[ "$1" =~ [0-9]+$ ]] && [ "`cat $2 | wc -l`" -ge "$1" ] || return 1
 }
 
-function clear_line () {
-    local known_hosts="${HOME}/.ssh/known_hosts"
-    local line_no="$1"
-    if check_line ${line_no} ${known_hosts}
-    then
-        sed -ri "${line_no}d" ${known_hosts}
-    else
-        echo "Line does not exist"
-    fi
+function sort_array () {
+    echo "$(
+        for element in $@
+        do
+            echo ${element}
+        done | sort -nr)"
 }
 
 function clear_known_hosts () {
-    if [ $# -eq 1 ]
-    then
-        clear_line $1
-    else
-        echo "Not implemented"
-    fi
+    local known_hosts="${HOME}/.ssh/known_hosts"
+    for line in $(sort_array $@)
+    do
+        if check_line ${line} ${known_hosts}
+        then 
+            sed -ri "${1}d" ${known_hosts}
+            echo "Removed line ${line} from ${known_hosts}" 
+        else
+            echo "Line ${line} not valid"
+            return 1
+        fi
+    done
 }
 
-#Need a better name
-alias clkh='clear_known_hosts'
+alias clkh='clear_known_hosts $@'
