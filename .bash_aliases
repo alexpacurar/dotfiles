@@ -15,6 +15,7 @@ function sort_array () {
 }
 
 function clear_known_hosts () {
+    #Removing lines for known_hosts
     local known_hosts="${HOME}/.ssh/known_hosts"
     for line in $(sort_array $@)
     do
